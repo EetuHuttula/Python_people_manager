@@ -1,5 +1,6 @@
 import json
 from person import Person
+
 def load_people(filename="people.json"):
     """Loads people data from a JSON file and returns a list of Person objects."""
     try:
@@ -13,9 +14,8 @@ def load_people(filename="people.json"):
                     person_data["gender"]
                 )
                 people_list.append(new_person)
-                
-                people_list.sort(key=lambda person: person.id)
             return people_list
+            
     except FileNotFoundError:
         print("No existing data file found. Starting with an empty list.")
         return []

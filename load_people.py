@@ -14,7 +14,7 @@ def load_people(filename="people.json"):
                 )
                 people_list.append(new_person)
                 
-                people_list.sort(key=lambda person: person.name)
+                people_list.sort(key=lambda person: person.id)
             return people_list
     except FileNotFoundError:
         print("No existing data file found. Starting with an empty list.")

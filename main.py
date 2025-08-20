@@ -1,44 +1,111 @@
-import json
+import time
 from save_people import save_people
+from delete_people import delete_person_by_name
 from load_people import load_people
 from find_person import find_person
 from add_person import add_person
-from person_helpers import get_total_age, get_total_people, genders_sum
-    
+from person_helpers import get_total_age, get_total_people, genders_sum, find_and_compare_people
+from delete_all_people import delete_all_people    
+from manage_people import change_person_details
 # --- Main program flow ---
+def main():
+  
 
-people = load_people()
+    people = load_people()
+    while True:
+        choice = input("\nDo you want to\n"
+        " (A)dd\n"
+        " (D)isplay all\n"
+        " (F)ind a person\n"
+        " (C)ompare people\n"
+        " (M)anage people\n"
+        " (O)ther options\n"
+        " (Q)uit? \n"
+        "> ").lower()
+        
+        if choice == 'a':
+            new_person = add_person()
+            if new_person:
+                people.append(new_person)
+                save_people(people)
+        elif choice == 'd':
+            print("\n--- All People ---")
+            if not people:
+                print("No people to display.")
+            else:
+                for person in people:
+                    print(person)
+            print("------------------")
 
-while True:
-    choice = input("\nDo you want to (A)dd, (D)isplay all, (F)ind a person, or (Q)uit? ").lower()
-    
-    if choice == 'a':
-        new_person = add_person()
-        if new_person:
-            people.append(new_person)
+        elif choice == 'm':
+            change_person_details(people)
+        elif choice == 'o':
+            while True:
+                choice = input(
+                            "\nWhat do you want to do?\n"
+                            "  (T) Total people\n"
+                            "  (S) Total age\n"
+                            "  (D) Delete a person\n"
+                            "  (DEL) Delete all people\n"
+                            "  (R) Refresh list\n"
+                            "  (M) Back to main menu\n"
+                            "> "
+                        ).lower()
+                print("\n ---------")
+                if choice == 't':
+                    total_people = get_total_people() 
+                    if total_people is not None:
+                        print(f"There is a total of {total_people} people in the list.")
+                        genders = genders_sum()
+                    continue
+                elif choice == 'r':
+                    print("\n--- All People ---")
+                    if not people:
+                        print("No people to display.")
+                    else:
+                        for person in people:
+                            print(person)
+                        print("------------------")
+            
+                elif choice == 'd':
+                    delete_person_by_name()
+                    people = load_people()
+                    continue
+                elif choice == 's':
+                    total_sum = get_total_age()
+                    avg_age_int = get_total_age()
+                    if total_sum is not None:
+                        print(f"The total age of all people is: {total_sum[0]}.")
+                        print(f"The average age is: {avg_age_int[1]}.")
+                    continue
+                elif choice == 'del':
+                    confirmation = input("Are you sure you want to delete all people? (yes/no): ").lower()
+                    if confirmation == 'yes':
+                        delete_all_people()
+                        people = []
+                    else:
+                        print("Deletion cancelled.")
+                elif choice == 'm':
+                    break
+
+
+        elif choice == 'c':
+            find_and_compare_people(people)
+        elif choice == 'f':
+            find_person(people)
+        elif choice == 'q':
             save_people(people)
-    elif choice == 'd':
-        print("\n--- All People ---")
-        if not people:
-            print("No people to display.")
-        else:
-            for person in people:
-                print(person)
-        print("------------------")
-        total_sum = get_total_age()
-        if total_sum is not None:
-            print(f"The total age of all people is: {total_sum}.")
-        print("------------------")
-        total_people = get_total_people()
-        if total_people is not None:
-            print(f"There is total of {total_people} people in the list.")
-        print("------------------")
-        genders = genders_sum()
-        print("------------------")
-    elif choice == 'f':
-        find_person(people)
-    elif choice == 'q':
-        save_people(people)
-        break
-    else:
-        print("Invalid choice. Please choose A, D, F, or Q.")
+            break
+
+if __name__ == "__main__":
+    print("Hello! Welcome to the People Manager.")
+    print("Loading data...")
+    start_time = time.time()
+    
+    people = load_people()
+    
+    end_time = time.time()
+    duration = end_time - start_time
+    
+    print(f"Data loaded. The operation took {duration:.4f} seconds.")
+    main()

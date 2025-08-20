@@ -110,11 +110,14 @@ def main():
 
 
         elif choice == 'c':
+            print("\n--- Compare People ---")
             find_and_compare_people()
         elif choice == 'f':
-            find_person()
+            print("\n--- Who are we looking for? ---")
+            find_person(people)
         elif choice == 'q':
             save_people(people)
+            print("Goodbye!")
             break
 
 if __name__ == "__main__":

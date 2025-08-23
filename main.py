@@ -4,10 +4,13 @@ from delete_people import delete_person_by_name
 from load_people import load_people
 from find_person import find_person
 from add_person import add_person
-from person_helpers import get_total_age, get_total_people, genders_sum, find_and_compare_people
+from utils.get_total_age import get_total_age
+from utils.get_total_people import get_total_people
+from utils.sum_genders import genders_sum
+from utils.compare_people import find_and_compare_people
 from delete_all_people import delete_all_people    
 from manage_people import change_person_details
-# --- Main program flow ---
+
 def main():
   
 
@@ -111,7 +114,7 @@ def main():
 
         elif choice == 'c':
             print("\n--- Compare People ---")
-            find_and_compare_people()
+            find_and_compare_people(people)
         elif choice == 'f':
             print("\n--- Who are we looking for? ---")
             find_person(people)

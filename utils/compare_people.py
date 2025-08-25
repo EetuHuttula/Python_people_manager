@@ -1,4 +1,5 @@
 def find_and_compare_people(people_list):
+    print("\n--- Compare People ---")
     """Finds and prints a person's details by name."""
     search_name = input("Enter the name of the person you want to compare: ")
     search_name2 = input("Enter the name of the second person you want to compare: ")

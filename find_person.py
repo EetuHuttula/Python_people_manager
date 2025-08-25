@@ -1,8 +1,7 @@
 import time
 def find_person(people_list):
     """Finds and prints a person's details by name."""
-    
-    print("\n--- Find Person ---")
+    print("\n--- Who are we looking for? ---")
     search_name = input("Enter the name of the person you want to find: ")
     found = False
     for person in people_list:

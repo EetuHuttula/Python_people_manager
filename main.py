@@ -1,5 +1,15 @@
 import time
-from utils.imports import *
+from find_person import find_person
+from find_person import find_person
+from add_person import add_person
+from manage_people import change_person_details
+from save_people import save_people
+from load_people import load_people
+from utils.compare_people import find_and_compare_people
+from utils.compare_people import find_and_compare_people
+from utils.choices_d import choice_d_options
+from utils.choices_o import choice_o_options
+
 def main():
     people = load_people() 
     def add_action():

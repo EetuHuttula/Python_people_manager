@@ -16,7 +16,7 @@ def main(people):
     Main program flow
     """
     def add_action():
-        new_person = add_person()
+        new_person = add_person(people)
         if new_person:
             people.append(new_person)
             save_people(people)
@@ -43,7 +43,6 @@ def main(people):
         ).lower().strip()
 
         if choice == 'q':
-            save_people(people)
             print("Goodbye!")
             break
         action = menu_actions.get(choice)

@@ -2,20 +2,22 @@ import json
 from person import Person
 
 def load_people(filename="people.json"):
-    """Loads people data from a JSON file and returns a list of Person objects."""
     try:
         with open(filename, "r") as f:
             data = json.load(f)
-            people_list = []
-            for person_data in data:
-                new_person = Person(
-                    person_data["name"],
-                    person_data["age"],
-                    person_data["gender"]
+            people = []
+            for d in data:
+                person = Person(
+                    d["name"],
+                    d["age"],
+                    d["gender"],
+                    d["sections"],
+                    d["floor"],
+                    d["apartment_number"],
+                    d.get("building_address", "Rauninkatu 32")
                 )
-                people_list.append(new_person)
-            return people_list
-            
+                people.append(person)
+            return people
     except FileNotFoundError:
-        print("No existing data file found. Starting with an empty list.")
+        print("No data file found. Starting empty.")
         return []

@@ -1,6 +1,7 @@
 import json 
 
 def get_total_age(filename="people.json"):
+    """sums ages, gets average age."""
     total_age = 0
     try:
         with open(filename, "r") as f:

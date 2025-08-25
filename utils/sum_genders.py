@@ -1,5 +1,6 @@
 import json
 def genders_sum(filename="people.json"):
+    """Sums genders."""
     male_count = 0
     female_count = 0
     try:

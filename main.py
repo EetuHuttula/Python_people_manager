@@ -1,22 +1,25 @@
+"""
+People manager CLI Application.
+"""
 import time
-from find_person import find_person
 from find_person import find_person
 from add_person import add_person
 from manage_people import change_person_details
 from save_people import save_people
 from load_people import load_people
 from utils.compare_people import find_and_compare_people
-from utils.compare_people import find_and_compare_people
 from utils.choices_d import choice_d_options
 from utils.choices_o import choice_o_options
 
-def main():
-    people = load_people() 
+def main(people):
+    """
+    Main program flow
+    """
     def add_action():
-            new_person = add_person()
-            if new_person:
-                people.append(new_person)
-                save_people(people)
+        new_person = add_person()
+        if new_person:
+            people.append(new_person)
+            save_people(people)
     menu_actions = {
         'a': add_action,
         'd': lambda: choice_d_options(people),
@@ -27,7 +30,7 @@ def main():
         }
 
     while True:
-        
+
         choice = input(
             "\nDo you want to\n"
             " (A)dd\n"
@@ -38,7 +41,7 @@ def main():
             " (O)ther options\n"
             " (Q)uit?\n> "
         ).lower().strip()
-        
+
         if choice == 'q':
             save_people(people)
             print("Goodbye!")
@@ -53,15 +56,12 @@ if __name__ == "__main__":
     print("Hello! Welcome to the People Manager.")
     print("Loading data...")
     start_time = time.time()
-    
     people = load_people()
-    
     end_time = time.time()
     duration = end_time - start_time
-    
     print(f"Data loaded. The operation took {duration:.4f} seconds.")
     try:
-        main()
+        main(people)
     except KeyboardInterrupt:
         print("\nInterrupted! Saving data and exiting...")
         save_people(people)

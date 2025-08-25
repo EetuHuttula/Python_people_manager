@@ -1,4 +1,5 @@
 def choice_d_options(people):
+    """choices from option d."""
     print("\n--- All People ---")
     if not people:
         print("No people to display.")

@@ -1,5 +1,6 @@
 import json
 def get_total_people(filename="people.json"):
+    """finds all people."""
     try:
         with open(filename, "r") as f:
             people_list = json.load(f)

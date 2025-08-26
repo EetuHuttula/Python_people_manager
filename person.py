@@ -9,7 +9,7 @@ class Person:
         self.age = age
         self.gender = gender
         
-        #Apartment info
+        
         self.sections = sections
         self.floor = floor
         self.apartment_number = apartment_number

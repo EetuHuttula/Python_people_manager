@@ -13,7 +13,7 @@ def change_person_details(people):
             changes_made = False
 
             # Get new name, check if not empty
-            new_name_input = input("Enter new name (or press Enter to keep current): ")
+            new_name_input = input("Enter new name (or press Enter to keep current): ").capitalize()
             if new_name_input:
                 person.name = new_name_input
                 changes_made = True
@@ -28,7 +28,7 @@ def change_person_details(people):
                     print("Invalid age entered. Keeping current age.")
 
             # Get new gender, check if not empty
-            new_gender_input = input("Enter new gender (or press Enter to keep current): ")
+            new_gender_input = input("Enter new gender (or press Enter to keep current): ").capitalize()
             if new_gender_input:
                 person.gender = new_gender_input
                 changes_made = True

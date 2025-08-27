@@ -1,9 +1,9 @@
 from utils.get_total_age import get_total_age
 from utils.get_total_people import get_total_people
 from utils.sum_genders import genders_sum
-from delete_all_people import delete_all_people
-from delete_people import delete_person_by_name
-from load_people import load_people
+from controls.delete_all_people import delete_all_people
+from controls.delete_people import delete_person_by_name
+from controls.load_people import load_people
 
 def choice_o_options(people):
     """Choices from option O."""  
@@ -35,7 +35,7 @@ def choice_o_options(people):
                 print("------------------")
     
         elif choice == 'd':
-            delete_person_by_name()
+            delete_person_by_name(people)
             people = load_people()
             continue
         elif choice == 's':

@@ -1,4 +1,4 @@
-from save_people import save_people
+from controls.save_people import save_people
 
 def change_person_details(people):
     """Function to change a person's details."""

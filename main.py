@@ -2,10 +2,10 @@
 People manager CLI Application.
 """
 import time
-from utils.find_person import find_person
+from controls.find_person import find_person
 from controls.add_person import add_person
 from controls.manage_people import change_person_details
-from save_people import save_people
+from controls.save_people import save_people
 from controls.load_people import load_people
 from utils.compare_people import find_and_compare_people
 from utils.choices_d import choice_d_options

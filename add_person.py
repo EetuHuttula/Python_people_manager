@@ -5,16 +5,12 @@ from load_people import load_people
 def add_person(people_list):
     """Prompts the user for a new person's details and returns a Person object."""
     try:
-        residents = load_people()
+        residents = load_people() or []
+        total_apartments = 18
         if is_every_apartment_full(residents):
             print("All apartments are occupied.")
             return None
-        elif residents is not None:
-            for i in range(len(residents)):
-                apartments = 18
-                i += 1 
-                left = apartments - i
-                continue
+        left = total_apartments - len(residents)
         print(f"There is still {left} apartments left.")
 
         name = input("Name: ").strip().capitalize()
